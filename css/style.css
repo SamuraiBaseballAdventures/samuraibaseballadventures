@@ -352,6 +352,10 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
     gap: 5rem;
     align-items: center;
 }
+.service-inner--single {
+    grid-template-columns: 1fr;
+    max-width: 700px;
+}
 .service-text .label { display: block; }
 .service-stats {
     display: grid;
@@ -626,6 +630,21 @@ button { font-family: var(--sans); cursor: pointer; border: none; background: no
 @keyframes panelIn {
     from { opacity: 0; transform: translateY(12px); }
     to   { opacity: 1; transform: translateY(0); }
+}
+.itin-panel-img {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    max-height: min(640px, 80vw);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 1.75rem;
+}
+.itin-panel-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 .itin-panel-head {
     margin-bottom: 1.5rem;

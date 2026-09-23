@@ -143,9 +143,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         group_size:   data.groupSize,
                         travel_date:  data.travelDate || '',
                         message:      data.message || '',
+                        notify_email: 'hello@japan-adventures.co',
                         submitted_at: new Date().toISOString()
                     })
                 });
+                // Mailto fallback — sends data to hello@japan-adventures.co
+                const subject = encodeURIComponent('New Tour Inquiry from ' + data.firstName + ' ' + data.lastName);
+                const body = encodeURIComponent(
+                    'Name: ' + data.firstName + ' ' + data.lastName + '\n' +
+                    'Email: ' + data.email + '\n' +
+                    'Tour Type: ' + (data.tourType || '-') + '\n' +
+                    'Group Size: ' + (data.groupSize || '-') + '\n' +
+                    'Travel Date: ' + (data.travelDate || '-') + '\n\n' +
+                    'Message:\n' + (data.message || '-')
+                );
+                window.location.href = 'mailto:hello@japan-adventures.co?subject=' + subject + '&body=' + body;
             } catch (err) {
                 console.warn('API note:', err);
             }
